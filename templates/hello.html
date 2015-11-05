@@ -7,22 +7,24 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <h1>Hello, SmartNinja!</h1>
-
-    <form method='post' action='/rezultat'>
-        <input name='vnos'>
-        <button type='submit'>Objavi</button>
-    </form>
-    <div>
-        {{ vnos }}
+    <div id=center>
+    <h1>Hello, dobrodošel na vaji za post</h1>
+        <form method='post' action='/rezultat'>
+            <input name='vnos'>
+            <button type='submit'>Objavi</button>
+        </form>
+        <div>
+            {{ vnos }}
+        </div>
+        <div id="link">
+            <a href="/kalkulator">Tukaj klikni da dobiš kalkulator</a>
+        </div>
+        <div id="link">
+            <a href="/random">Tukaj klikni da dobiš random</a>
+        </div>
+        <div id="link">
+            <a href="/pretvornik">Tukaj klikni da dobiš pretvornik enot</a>
+        </div>
     </div>
-    <div id="link">
-
-
-        <a href="/kalkulator">Tukaj klikni da dobiš čas</a>
-
-
-    </div>
-
 </body>
 </html>

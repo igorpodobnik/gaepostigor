@@ -1,0 +1,31 @@
+..<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Kalkulator</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    
+    <div id=center>
+    <h1>Hello, Pretvornik!</h1>
+    <p> Vnesi številko in pa enoti (trenutno s->min in km -> mi)</p>
+    <form method='post' action='/pretvornik'>
+        <ol>
+        <li> Vrednost             <input name='stevilka'></li>
+        <li> Originalna enota   <input name='prvaenota'></li>
+        <li> Končna enota        <input name='drugaenota'></li>
+        <li><button type='submit'>Objavi</button></li>
+        </ol>
+
+    </form>
+    <div>
+         Rezultat je: {{ koncnirezultat }}
+    </div>
+    <div id="link">
+        <a href="/">Tukaj klikni za nazaj</a>
+    </div>
+    </div>
+</body>
+</html>

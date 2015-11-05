@@ -2,26 +2,24 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Kalkulator</title>
+    <title>Random</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     
     <div id=center>
-    <h1>Hello, Kalkulator!</h1>
+    <h1>Hello, Random!</h1>
 
-    <form method='post' action='/kalkulator'>
+    <form method='post' action='/random'>
         <ol>
-        <li> Številka A              <input name='prva'></li>
-        <li> Matematična operacija   <input name='oper'></li>
-        <li> Številka B              <input name='druga'></li>
+        <li> Vnesi številko!              <input name='ugibam'></li>
         <li><button type='submit'>Objavi</button></li>
         </ol>
 
     </form>
     <div>
-         Rezultat je: {{ rezultat }}
+         Rezultat je: {{ visjemanjse }}
     </div>
     <div id="link">
         <a href="/">Tukaj klikni za nazaj</a>
