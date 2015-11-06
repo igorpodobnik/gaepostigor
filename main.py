@@ -83,7 +83,7 @@ def randomm(stevilka):
         elif stevilka>glavna_stevilka:
             tekst = "Prevelika"
         else:
-            tekst = "---Zmaga!!!---"
+            tekst = "--- Zmaga!!! ---"
     else:
         tekst="Vnesi stevilko"
     return tekst
