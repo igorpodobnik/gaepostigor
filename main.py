@@ -105,14 +105,14 @@ class RezultatHandler(BaseHandler):
 class MathHandler(BaseHandler):
     def get(self):
         #params = {"vnos" : skupaj }
-        return self.render_template("kalkulator.html")
+        return self.render_template("kalkulator_old.html")
     def post(self):
         a=self.request.get("prva")
         b=self.request.get("druga")
         operacija=self.request.get("oper")
         alfa = matematika(a,b,operacija)
         params={"rezultat":alfa}
-        return self.render_template("kalkulator.html", params=params)
+        return self.render_template("kalkulator_old.html", params=params)
 
 class PretvorHandler(BaseHandler):
     def get(self):

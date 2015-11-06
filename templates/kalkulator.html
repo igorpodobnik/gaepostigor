@@ -1,37 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Kalkulator</title>
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
+{% block title %}Kalkulator{% endblock title %}
+
+{% block specifika %}
     
     <div id=center>
-    <h1>Hello, Kalkulator!</h1>
-
-    <form method='post' action='/kalkulator'>
-        <ol>
-        <li> Številka A              <input name='prva'></li>
-        <li> Matematična operacija   <select name='oper'>
-        <option value="+">plus</option>
-        <option value="-">minus</option>
-        <option value="*">množenje</option>
-        <option value="/">deljenje</option>
-        </select>
-        </li>
-        <li> Številka B              <input name='druga'></li>
-        <li><button type='submit'>Objavi</button></li>
-        </ol>
-
-    </form>
-    <div>
+        <h1>Hello, Kalkulator!</h1>
+        <form method='post' action='/kalkulator'>
+            <ol>
+                <li> Številka A              <input name='prva'></li>
+                <li> Matematična operacija   <select name='oper'>
+                    <option value="+">plus</option>
+                    <option value="-">minus</option>
+                    <option value="*">množenje</option>
+                    <option value="/">deljenje</option>
+                    </select>
+                </li>
+                <li> Številka B              <input name='druga'></li>
+                <li><button type='submit'>Objavi</button></li>
+            </ol>
+        </form>
+        <div>
          Rezultat je: {{ rezultat }}
-    </div>
-    <div id="link">
+        </div>
+        <div id="link">
         <a href="/">Tukaj klikni za nazaj</a>
+        </div>
     </div>
-    </div>
-</body>
-</html>
+{% endblock specifika %}
