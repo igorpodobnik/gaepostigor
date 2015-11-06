@@ -1,30 +1,44 @@
 body {
     background-color: lightcyan;
+    background-image: url("/assets/images/background-wallpapers-7.jpg");
 }
 
 div {
     height: 50px;
+    background-color: lightcyan;
+
+}
+
+
+h1 {
+left :50%;
+
 }
 
 #link {
     height: 50px;
 }
 
-h1 {
-left: 50%;
+p {
+
+background-color: red;
+
 }
 
 #center{
+background-color: lightyellow;
 position: fixed; /* or absolute */
-  top: 50%;
-  left: 50%;
-    margin-top: -220px;
-    margin-left: -110px;
+top: 50%;
+left: 50%;
+margin-top: -220px;
+margin-left: -110px;
 }
 
 ol
 {
     list-style-type: none;
+    background-color: lightgreen;
+
 }
 
 li {
