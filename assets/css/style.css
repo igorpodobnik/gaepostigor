@@ -12,20 +12,23 @@ div {
 
 h1 {
 left :50%;
+text-align:center;
 
 }
 
 #link {
     height: 50px;
+    text-align:center;
 }
 
 p {
 
 background-color: red;
-
+text-align:center;
 }
 
 #center{
+text-align:center;
 background-color: lightyellow;
 position: fixed; /* or absolute */
 top: 50%;
@@ -38,12 +41,14 @@ ol
 {
     list-style-type: none;
     background-color: lightgreen;
-
+    text-align:center;
 }
 
 li {
-width: 120px;
+text-align:center;
+
 }
 input {
-float:right;
+text-align:center;
+
 }
