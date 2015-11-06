@@ -14,7 +14,13 @@
     <form method='post' action='/kalkulator'>
         <ol>
         <li> Številka A              <input name='prva'></li>
-        <li> Matematična operacija   <input name='oper'></li>
+        <li> Matematična operacija   <select name='oper'>
+        <option value="+">plus</option>
+        <option value="-">minus</option>
+        <option value="*">množenje</option>
+        <option value="/">deljenje</option>
+        </select>
+        </li>
         <li> Številka B              <input name='druga'></li>
         <li><button type='submit'>Objavi</button></li>
         </ol>

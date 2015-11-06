@@ -26,3 +26,10 @@ ol
 {
     list-style-type: none;
 }
+
+li {
+width: 120px;
+}
+input {
+float:right;
+}
