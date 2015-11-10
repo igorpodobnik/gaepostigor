@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Posamezen vnos{% endblock title %}
+
+{% block specifika %}
+    
+    <div id=center>
+        <h1>Podatki sporočila</h1>
+
+        <p>ID sporočila: {{ sporocilo.key.id() }}</p>
+        <p>Vnos sporočila: {{ sporocilo.vnos }}</p>
+        <p>Datum sporočila: {{ sporocilo.nastanek }}</p>
+        <div id="link">
+            <a href="/seznam-sporocil">Tukaj klikni za nazaj</a>
+        </div>
+    </div>
+{% endblock specifika %}

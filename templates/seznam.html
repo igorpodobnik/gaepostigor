@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Seznam{% endblock title %}
+
+{% block specifika %}
+    
+    <div id=center>
+        <h1>Seznam sporočil</h1>
+
+        {% for sporocilo in seznam %}
+        <p><a href="/sporocilo/{{ sporocilo.key.id() }}">{{ sporocilo.vnos }}, {{ sporocilo.key.id() }}, {{ sporocilo.nastanek }}</a></p>
+        {% endfor %}
+        <div id="link">
+            <a href="/">Tukaj klikni za nazaj</a>
+        </div>
+    </div>
+{% endblock specifika %}

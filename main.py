@@ -2,7 +2,7 @@
 import os
 import jinja2
 import webapp2
-
+from models import Sporocilo
 
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
@@ -98,9 +98,11 @@ class RezultatHandler(BaseHandler):
         dodatno = "Uporabnik je vpisal: "
         rezultat = self.request.get("vnos")
         skupaj = dodatno + rezultat  # zdruzimo zgornja dva stringa v enega
-        #self.write(skupaj)
         params = {"vnos" : skupaj }
+        sporocilo = Sporocilo(vnos=rezultat)
+        sporocilo.put()
         return self.render_template("hello.html" , params=params)
+
 
 class MathHandler(BaseHandler):
     def get(self):
@@ -135,6 +137,17 @@ class RandomHandler(BaseHandler):
         params = {"visjemanjse":beta}
         return self.render_template("random.html", params=params)
 
+class SeznamSporocilHandler(BaseHandler):
+    def get(self):
+        seznam = Sporocilo.query().fetch()
+        params = {"seznam" : seznam }
+        return self.render_template("seznam.html" , params=params)
+
+class PosameznoSporociloHandler(BaseHandler):
+    def get(self, sporocilo_id):
+        sporocilo = Sporocilo.get_by_id(int(sporocilo_id))
+        params = {"sporocilo": sporocilo}
+        self.render_template("posamezen.html", params=params)
 
 
 app = webapp2.WSGIApplication([
@@ -143,4 +156,6 @@ app = webapp2.WSGIApplication([
     webapp2.Route('/kalkulator', MathHandler),
     webapp2.Route('/random', RandomHandler),
     webapp2.Route('/pretvornik', PretvorHandler),
+    webapp2.Route('/seznam-sporocil', SeznamSporocilHandler),
+    webapp2.Route('/sporocilo/<sporocilo_id:\d+>', PosameznoSporociloHandler),
 ], debug=True)
