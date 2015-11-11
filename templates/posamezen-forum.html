@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Posamezen vnos{% endblock title %}
+
+{% block specifika %}
+    
+    <div id=center>
+        <h1>Podatki sporočila</h1>
+
+        <p>ID sporočila: {{ forum.key.id() }}</p>
+        <p>Ime: {{ forum.fime }}</p>
+        <p>Priimek: {{ forum.fpriimek }}</p>
+        <p>Vnos sporočila: {{ forum.vnos }}</p>
+        <p>Datum sporočila: {{ forum.nastanek }}</p>
+        <div id="link">
+            <a href="/forum">Tukaj klikni za nazaj</a>
+        </div>
+    </div>
+{% endblock specifika %}

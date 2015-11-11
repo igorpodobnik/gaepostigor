@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Seznam{% endblock title %}
+
+{% block specifika %}
+    
+    <div id=center>
+        <h1>Vnesite sporočilo</h1>
+            <form method='post' action='/forum'>
+            <ul>
+                <li> Ime</li>
+                <li><input name='fime'></li>
+                <li> Priimek</li>
+                <li><input name='fpriimek'></li>
+                <li> Email</li>
+                <li><input name='femail'></li>
+                <li> Sporocilo</li>
+                <li><textarea rows="4" cols="50" name='fsporocilo'>Obvezno vpisi kaj notri</textarea></li>
+                <li><button type='submit'>Objavi</button></li>
+                </ul>
+
+
+        <h1>Seznam sporočil</h1>
+
+        {% for forum in forumseznam %}
+
+            <p>Ime: <a href="/forum/{{ forum.key.id() }}">{{ forum.fime }}</a></p>
+            <p>Sporočilo: {{ forum.fsporocilo }} </p>
+        {% endfor %}
+        <div id="link">
+            <a href="/">Tukaj klikni za nazaj</a>
+        </div>
+    </div>
+{% endblock specifika %}

@@ -30,7 +30,7 @@ text-align:center;
 #center{
 text-align:center;
 background-color: lightyellow;
-position: fixed; /* or absolute */
+position: absolute; /* or absolute */
 top: 50%;
 left: 50%;
 margin-top: -220px;

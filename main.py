@@ -2,7 +2,9 @@
 import os
 import jinja2
 import webapp2
-from models import Sporocilo
+from models import Sporocilo,Forum
+import time
+
 
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
@@ -12,7 +14,7 @@ a=0
 b=0
 oper ="+"
 glavna_stevilka = 664
-
+sporocilo = "Obvezno vpisi kaj notri"
 
 
 class BaseHandler(webapp2.RequestHandler):
@@ -143,6 +145,31 @@ class SeznamSporocilHandler(BaseHandler):
         params = {"seznam" : seznam }
         return self.render_template("seznam.html" , params=params)
 
+class ForumSporocilHandler(BaseHandler):
+    def get(self):
+        fseznam = Forum.query().fetch()
+        params = {"forumseznam" : fseznam }
+        return self.render_template("forum.html" , params=params)
+    def post(self):
+        imeforum = self.request.get("fime")
+        priimekforum = self.request.get("fpriimek")
+        email = self.request.get("femail")
+        sporocilo = self.request.get("fsporocilo")
+        #params = {"fime" : imeforum }
+        if sporocilo != "Obvezno vpisi kaj notri":
+            forum = Forum(fime=imeforum, fpriimek=priimekforum, fsporocilo=sporocilo, femail=email)
+            forum.put()
+            time.sleep(1)
+        fseznam = Forum.query().fetch()
+        params = {"forumseznam" : fseznam }
+        return self.render_template("forum.html" , params=params)
+
+# DODAJ SE POSAMEZEN VNOS S FORUMA
+class PosameznoForumHandler(BaseHandler):
+    def get(self, forum_id):
+        sporocilo = Forum.get_by_id(int(forum_id))
+        params = {"forum": sporocilo}
+        self.render_template("posamezen-forum.html", params=params)
 class PosameznoSporociloHandler(BaseHandler):
     def get(self, sporocilo_id):
         sporocilo = Sporocilo.get_by_id(int(sporocilo_id))
@@ -157,5 +184,7 @@ app = webapp2.WSGIApplication([
     webapp2.Route('/random', RandomHandler),
     webapp2.Route('/pretvornik', PretvorHandler),
     webapp2.Route('/seznam-sporocil', SeznamSporocilHandler),
+    webapp2.Route('/forum', ForumSporocilHandler),
     webapp2.Route('/sporocilo/<sporocilo_id:\d+>', PosameznoSporociloHandler),
+    webapp2.Route('/forum/<forum_id:\d+>', PosameznoForumHandler),
 ], debug=True)
