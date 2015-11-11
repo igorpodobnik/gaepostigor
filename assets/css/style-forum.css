@@ -1,0 +1,68 @@
+body {
+    background-color: white;
+    background-image: none;
+}
+
+div {
+    height: 50px;
+    background-color: lightcyan;
+
+}
+
+
+h1 {
+left :50%;
+text-align:center;
+
+}
+
+#link {
+    height: 50px;
+    text-align:center;
+}
+
+p {
+
+background-color: white;
+text-align:center;
+}
+
+#center{
+text-align:center;
+background-color: lightyellow;
+position: absolute; /* or absolute */
+top: 20%;
+left: 30%;
+margin-top: -120px;
+
+}
+
+ul
+{
+    list-style-type: none;
+    background-color: lightgreen;
+    text-align:center;
+    margin: 0;
+    padding: 5px;
+}
+
+ol
+{
+    list-style-type: none;
+    background-color: lightgreen;
+    text-align:center;
+    margin: 0;
+    padding: 5px;
+}
+
+
+li {
+text-align:center;
+
+
+
+}
+input {
+text-align:center;
+
+}

@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Seznam{% endblock title %}
+{% block title %}Forum{% endblock title %}
+
+{% block css %}<link rel="stylesheet" href="/assets/css/style-forum.css">{% endblock css %}
 
 {% block specifika %}
-    
+
     <div id=center>
         <h1>Vnesite sporočilo</h1>
             <form method='post' action='/forum'>
@@ -23,9 +25,9 @@
         <h1>Seznam sporočil</h1>
 
         {% for forum in forumseznam %}
-
             <p>Ime: <a href="/forum/{{ forum.key.id() }}">{{ forum.fime }}</a></p>
             <p>Sporočilo: {{ forum.fsporocilo }} </p>
+            <p>   --------------------------- </p>
         {% endfor %}
         <div id="link">
             <a href="/">Tukaj klikni za nazaj</a>

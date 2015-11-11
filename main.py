@@ -15,7 +15,7 @@ b=0
 oper ="+"
 glavna_stevilka = 664
 sporocilo = "Obvezno vpisi kaj notri"
-
+imeforum = "Neznanec"
 
 class BaseHandler(webapp2.RequestHandler):
 
@@ -152,6 +152,7 @@ class ForumSporocilHandler(BaseHandler):
         return self.render_template("forum.html" , params=params)
     def post(self):
         imeforum = self.request.get("fime")
+        print imeforum
         priimekforum = self.request.get("fpriimek")
         email = self.request.get("femail")
         sporocilo = self.request.get("fsporocilo")
@@ -164,12 +165,15 @@ class ForumSporocilHandler(BaseHandler):
         params = {"forumseznam" : fseznam }
         return self.render_template("forum.html" , params=params)
 
-# DODAJ SE POSAMEZEN VNOS S FORUMA
+
 class PosameznoForumHandler(BaseHandler):
     def get(self, forum_id):
         sporocilo = Forum.get_by_id(int(forum_id))
         params = {"forum": sporocilo}
         self.render_template("posamezen-forum.html", params=params)
+
+
+
 class PosameznoSporociloHandler(BaseHandler):
     def get(self, sporocilo_id):
         sporocilo = Sporocilo.get_by_id(int(sporocilo_id))
@@ -188,3 +192,5 @@ app = webapp2.WSGIApplication([
     webapp2.Route('/sporocilo/<sporocilo_id:\d+>', PosameznoSporociloHandler),
     webapp2.Route('/forum/<forum_id:\d+>', PosameznoForumHandler),
 ], debug=True)
+
+#TODO: prepreci dodatne vnose ko reloadasstran... sortiraj vnose po datumu
