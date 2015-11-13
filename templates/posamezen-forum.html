@@ -12,6 +12,8 @@
         <p>Priimek: {{ forum.fpriimek }}</p>
         <p>Vnos sporočila: {{ forum.vnos }}</p>
         <p>Datum sporočila: {{ forum.nastanek }}</p>
+        <a href="/forum/{{forum.key.id()}}/uredi">Uredi</a>
+        <a href="/forum/{{forum.key.id()}}/zbrisi">Zbriši</a>
         <div id="link">
             <a href="/forum">Tukaj klikni za nazaj</a>
         </div>

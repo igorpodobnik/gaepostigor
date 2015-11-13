@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}redirect{% endblock title %}
+
+{% block css %}{% endblock css %}
+
+{% block specifika %}
+
+<h1>Ali bi ti res tole brisal? :)</h1>
+
+<form action="/forum/{{forum.key.id()}}/zbrisi" method="post">
+     <button type="submit">BRIŠI!!!!</button>
+     <a href = "/forum">NOOOO!!!!</a>
+ </form>
+
+
+
+{% endblock specifika %}

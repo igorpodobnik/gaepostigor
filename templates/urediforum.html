@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}redirect{% endblock title %}
+
+{% block css %}{% endblock css %}
+
+{% block specifika %}
+
+ <form action="/forum/{{forum.key.id()}}/uredi" method="post">
+     <input name = "ime" value = "{{ forum.fime }}" >
+     <button type="submit">Shrani</button>
+ </form>
+
+
+
+{% endblock specifika %}
