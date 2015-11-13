@@ -14,3 +14,4 @@ class Forum(ndb.Model):
     femail = ndb.StringProperty()
     fsporocilo = ndb.TextProperty()
     nastanek = ndb.DateTimeProperty(auto_now_add=True)
+    deleted = ndb.BooleanProperty(default=False)

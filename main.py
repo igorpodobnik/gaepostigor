@@ -96,7 +96,10 @@ class SeznamSporocilHandler(BaseHandler):
 
 class ForumSporocilHandler(BaseHandler):
     def get(self):
-        fseznam = Forum.query().fetch()
+        #spodnje je vse pober
+        #fseznam = Forum.query().fetch()
+        #v query das notri pogoj
+        fseznam = Forum.query(Forum.deleted == False).fetch()
         params = {"forumseznam" : fseznam }
         return self.render_template("forum.html" , params=params)
 
@@ -165,8 +168,6 @@ class ForumEditHandler(BaseHandler):
     def post(self, sporocilo_id):
         vnos = self.request.get("ime")
         vmesnoime = Forum.get_by_id(int(sporocilo_id))
-        print vmesnoime
-        print "pazi zgoraj"
         vmesnoime.fime = vnos
         vmesnoime.put()
         time.sleep(1)
@@ -182,12 +183,10 @@ class ForumZbrisiHandler(BaseHandler):
         self.render_template("zbrisiforum.html", params=params)
 
     def post(self, sporocilo_id):
-        vnos = self.request.get("ime")
-        vmesnoime = Forum.get_by_id(int(sporocilo_id))
-        print vmesnoime
-        print "pazi zgoraj"
-        vmesnoime.fime = vnos
-        vmesnoime.put()
+        izbris = Forum.get_by_id(int(sporocilo_id))
+        #vmesnoime.key.delete()
+        izbris.deleted=True
+        izbris.put()
         time.sleep(1)
         self.redirect_to("forum1")
 
