@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}redirect{% endblock title %}
+{% block title %}Zbrisi{% endblock title %}
 
-{% block css %}{% endblock css %}
+{% block css %}<link rel="stylesheet" href="/assets/css/style-forum.css">{% endblock css %}
 
 {% block specifika %}
-
+<div id=center>
 <h1>Ali bi ti res tole brisal? :)</h1>
+    <form action="/forum/{{forum.key.id()}}/zbrisi" method="post">
+     <button id=buttonbrisi type="submit">BRIŠI!!!!</button><br>
 
-<form action="/forum/{{forum.key.id()}}/zbrisi" method="post">
-     <button type="submit">BRIŠI!!!!</button><br>
-     <a href = "/forum">NOOOO!!!!</a>
- </form>
-
+    </form>
+    <div></div>
+    <a id="aback" href = "/forum">Bejži nazaj</a>
+</div>
 
 
 {% endblock specifika %}

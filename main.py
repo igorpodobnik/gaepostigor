@@ -166,9 +166,17 @@ class ForumEditHandler(BaseHandler):
         #tale forum gre potem v html vse forum.neki itd.
         self.render_template("urediforum.html", params=params)
     def post(self, sporocilo_id):
-        vnos = self.request.get("ime")
+        vnosi = self.request.get("ime")
+        vnosp = self.request.get("priimek")
+        vnose = self.request.get("email")
+        vnoss = self.request.get("sporocilo")
+        if not vnosi:
+            vnosi="Neznanec"
         vmesnoime = Forum.get_by_id(int(sporocilo_id))
-        vmesnoime.fime = vnos
+        vmesnoime.fime = vnosi
+        vmesnoime.fpriimek = vnosp
+        vmesnoime.femail = vnose
+        vmesnoime.fsporocilo = vnoss
         vmesnoime.put()
         time.sleep(1)
         self.redirect_to("forum1")

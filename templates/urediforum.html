@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 
-{% block title %}redirect{% endblock title %}
+{% block title %}Uredi{% endblock title %}
 
-{% block css %}{% endblock css %}
+{% block css %}<link rel="stylesheet" href="/assets/css/style-forum.css">{% endblock css %}
 
 {% block specifika %}
-
+<div id=center>
  <form action="/forum/{{forum.key.id()}}/uredi" method="post">
-     <input name = "ime" value = "{{ forum.fime }}" ><br>
+     <ul>
+     <li><input name = "ime" value = "{{ forum.fime }}" ><br></li>
+     <li><input name = "priimek" value = "{{ forum.fpriimek }}" ><br></li>
+     <li><input name = "email" value = "{{ forum.femail }}" ><br></li>
+     <li><input name = "sporocilo" value = "{{ forum.fsporocilo }}" ><br></li>
+     </ul>
      <button type="submit">Shrani</button>
  </form>
-
+</div>
 
 
 {% endblock specifika %}
