@@ -141,5 +141,10 @@ height:25px;
 }
 input {
 text-align:center;
+font-family: "Arial";
+}
 
+textarea {
+font-family: "Arial";
+resize: none;
 }

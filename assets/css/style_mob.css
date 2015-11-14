@@ -1,20 +1,79 @@
 body {
-    background-color: lightcyan;
-    background-image: url("/assets/images/background-wallpapers-6.jpg");
+    background-color: white;
+    background-image: none;
+}
 
+button {
+margin-top:80px;
+height:50px;
+width:180px;
+
+#buttonbrisi{
+margin-bottom: 1000px;
+}
 }
 
 div {
+
+    width:440px;
     height: 50px;
-    background-color: lightcyan;
+    background-color: white;
+    box-sizing: border-box;
 
 }
+
+
+#testing{
+background-color:red;
+}
+
+
+#auredi {
+position: relative;
+  top:13px;
+  font: bold 18px Arial;
+  text-decoration: none;
+  background-color:lightgreen;
+  color: #333333;
+  padding: 10px 80px;
+  margin-bottom: 20px;
+  border-radious: 5px;
+    }
+
+#adelete{
+  max-width:80%;
+  position: relative;
+  top:13px;
+  font: bold 18px Arial;
+  text-decoration: none;
+  background-color: pink;
+  color: #333333;
+  padding: 10px 80px;
+  margin-bottom: 20px;
+  border-radious: 5px;
+  }
+
+#aback{
+  position: relative;
+  top:13px;
+  font: bold 18px Arial;
+
+  text-decoration: none;
+  background-color: lightyellow;
+  color: #333333;
+  padding: 10px 18px;
+  margin-bottom: 20px;
+  border-radious: 5px;
+  }
+
+
 
 
 
 h1 {
 left :50%;
 text-align:center;
+font: bold 30px Arial;
 
 }
 
@@ -23,12 +82,26 @@ text-align:center;
     text-align:center;
 }
 
-p {
 
-background-color: red;
+
+p {
+font: bold 12px Arial;
+background-color: white;
 text-align:center;
 }
 
+
+
+
+#center{
+width:auto;
+text-align:center;
+background-color: white;
+position: absolute; /* or absolute */
+top: 120px;
+left: 120px;
+
+}
 
 ul
 {
@@ -37,7 +110,15 @@ ul
     text-align:center;
     margin: 0;
     padding: 5px;
+    padding-bottom:120px;
+    border-radius:20px;
 }
+
+#posli{
+padding-bottom:1px;
+margin-bottom:40px;
+}
+
 
 ol
 {
@@ -51,11 +132,18 @@ ol
 
 li {
 text-align:center;
+font: 12px Arial;
+height:25px;
 
 
 
 }
 input {
 text-align:center;
+font-family: "Arial";
+}
 
+textarea {
+font-family: "Arial";
+resize: none;
 }
