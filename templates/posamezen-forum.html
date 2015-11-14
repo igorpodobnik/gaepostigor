@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 
 {% block title %}Posamezen vnos{% endblock title %}
+{% block css %}<!--suppress XmlDuplicatedId -->
+<link rel="stylesheet" href="/assets/css/style-forum.css">{% endblock css %}
 
 {% block specifika %}
     
     <div id=center>
         <h1>Podatki sporočila</h1>
-
-        <p>ID sporočila: {{ forum.key.id() }}</p>
-        <p>Ime: {{ forum.fime }}</p>
-        <p>Priimek: {{ forum.fpriimek }}</p>
-        <p>Vnos sporočila: {{ forum.vnos }}</p>
-        <p>Datum sporočila: {{ forum.nastanek }}</p>
-        <a href="/forum/{{forum.key.id()}}/uredi">Uredi</a>
-        <a href="/forum/{{forum.key.id()}}/zbrisi">Zbriši</a>
-        <div id="link">
-            <a href="/forum">Tukaj klikni za nazaj</a>
-        </div>
+        <ul id=posli>
+            <li>ID sporočila: {{ forum.key.id() }}</li>
+            <li>Ime: {{ forum.fime }}</li>
+            <li>Priimek: {{ forum.fpriimek }}</li>
+            <li>Vnos sporočila: {{ forum.vnos }}</li>
+            <li>Datum sporočila: {{ forum.nastanek }}</li>
+        </ul>
+        <div><a id=auredi href="/forum/{{forum.key.id()}}/uredi">Uredi</a></div>
+        <div><a id=adelete href="/forum/{{forum.key.id()}}/zbrisi">Zbriši</a></div>
+        <div><a id=aback href="/forum">Tukaj klikni za nazaj</a></div>
     </div>
 {% endblock specifika %}

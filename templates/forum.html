@@ -22,7 +22,7 @@
                 </ul>
 
 
-        <h1>Seznam sporočil</h1>
+        <h1 id=h1seznam>Seznam sporočil</h1>
 
         {% for forum in forumseznam %}
             <p>Ime: <a href="/forum/{{ forum.key.id() }}">{{ forum.fime }}</a></p>
@@ -30,7 +30,7 @@
             <p>   --------------------------- </p>
         {% endfor %}
         <div id="link">
-            <a href="/">Tukaj klikni za nazaj</a>
+            <a id=aback href="/">Tukaj klikni za nazaj</a>
         </div>
     </div>
 {% endblock specifika %}
