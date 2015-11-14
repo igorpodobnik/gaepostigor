@@ -9,13 +9,13 @@
  <form action="/forum/{{forum.key.id()}}/uredi" method="post">
      <ul>
      <li> Ime</li>
-     <li><input name = "ime" value = "{{ forum.fime }}" ></li>
+     <li><input name = "ime" value = "{{ forum.fime }}" onclick="this.focus();this.select()"></li>
      <li> Priimek</li>
-     <li><input name = "priimek" value = "{{ forum.fpriimek }}" ></li>
+     <li><input name = "priimek" value = "{{ forum.fpriimek }}" onclick="this.focus();this.select()"></li>
      <li> Email</li>
-     <li><input name = "email" value = "{{ forum.femail }}" ></li>
+     <li><input name = "email" value = "{{ forum.femail }}" onclick="this.focus();this.select()"></li>
      <li> Sporocilo</li>
-     <li><textarea rows="4" cols="50" name = "sporocilo">{{ forum.fsporocilo }}</textarea></li>
+     <li><textarea rows="4" cols="50" name = "sporocilo" onclick="this.focus();this.select()">{{ forum.fsporocilo }}</textarea></li>
      </ul>
      <button type="submit">Shrani</button>
 

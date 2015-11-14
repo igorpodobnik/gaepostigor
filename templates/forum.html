@@ -15,13 +15,13 @@
             <form method='post' action='/redirect'>
             <ul>
                 <li> Ime</li>
-                <li><input name='fime' value="Neznanec"></li>
+                <li><input name='fime' value="Neznanec" onclick="this.focus();this.select()"></li>
                 <li> Priimek</li>
                 <li><input name='fpriimek'></li>
                 <li> Email</li>
                 <li><input name='femail'></li>
                 <li> Sporocilo</li>
-                <li><textarea rows="4" cols="50" name='fsporocilo'>Obvezno vpisi kaj notri</textarea></li>
+                <li><textarea rows="4" cols="50" name='fsporocilo' onclick="this.focus();this.select()">Obvezno vpisi kaj notri</textarea></li>
                 <li><button type='submit'>Objavi</button></li>
                 </ul>
 
