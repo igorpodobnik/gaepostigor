@@ -97,6 +97,8 @@ class ForumSporocilHandler(BaseHandler):
         #fseznam = Forum.query().fetch()
         #v query das notri pogoj
         fseznam = Forum.query(Forum.deleted == False).fetch()
+        # SORT order takole zgleda... reverse za najvecjega navzdol
+        fseznam = sorted(fseznam, key=lambda dat:dat.nastanek, reverse=True)
         params = {"forumseznam" : fseznam }
         return self.render_template("forum.html" , params=params)
 
@@ -115,7 +117,9 @@ class ForumPostSporocilHandler(BaseHandler):
             forum.put()
             time.sleep(1)
         fseznam = Forum.query().fetch()
+
         print fseznam
+        print "gor glej"
         params = {"forumseznam" : fseznam }
         return self.render_template("forum.html" , params=params)
 
