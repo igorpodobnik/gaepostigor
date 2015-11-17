@@ -2,10 +2,12 @@
 
 {% block title %}Posamezen vnos{% endblock title %}
 {% block css %}<!--suppress XmlDuplicatedId -->
-<link rel="stylesheet" href="/assets/css/style-forum.css">{% endblock css %}
+<link rel="stylesheet" href="/assets/css/style-forum.css">
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+{% endblock css %}
 
 {% block specifika %}
-    
+
     <div id=center>
         <h1>Podatki sporočila</h1>
         <ul id=posli>
@@ -13,7 +15,7 @@
             <li>Ime: {{ forum.fime }}</li>
             <li>Priimek: {{ forum.fpriimek }}</li>
             <li>Email: {{ forum.femail }}</li>
-            <li>Vnos sporočila: {{ forum.vnos }}</li>
+            <li>Vnos sporočila: {{ forum.fsporocilo }}</li>
             <li>Datum sporočila: {{ forum.nastanek }}</li>
         </ul>
         <div><a id=auredi href="/forum/{{forum.key.id()}}/uredi">Uredi</a></div>

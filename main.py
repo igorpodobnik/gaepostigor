@@ -10,10 +10,7 @@ template_dir = os.path.join(os.path.dirname(__file__), "templates")
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
 skupaj="Uporabnik je vpisal: /"
 params = {}
-a=0
-b=0
-oper ="+"
-glavna_stevilka = 664
+
 sporocilo = "Obvezno vpisi kaj notri"
 imeforum = "Neznanec"
 

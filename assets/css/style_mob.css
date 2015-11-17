@@ -94,13 +94,15 @@ text-align:center;
 
 
 #center{
-width:auto;
+
 text-align:center;
 background-color: white;
 position: absolute; /* or absolute */
-top: 120px;
-left: 120px;
-
+top: 50%;
+left: 50%;
+margin-top: -250px;
+margin-left: -220px;
+width: 440px;
 }
 
 ul
@@ -146,4 +148,5 @@ font-family: "Arial";
 textarea {
 font-family: "Arial";
 resize: none;
+width: 350px;
 }

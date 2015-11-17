@@ -1,23 +1,25 @@
 __author__ = 'igorpodobnik'
 
-
+glavna_stevilka = 664
 
 def matematika(a,b,oper):
     if a.isdigit():
         a=int(a)
     else:
         a=0
+
     if b.isdigit():
         b=int(b)
     else:
-        a=b
+        b=0
+
     if oper == "+":
         rez = a+b
     elif oper == "-":
         rez = a-b
     elif oper == "*":
         rez = a*b
-    elif oper == "/":
+    elif oper == "/" and b<>0:
         rez = (a+0.0)/(b+0.0)
     else:
         rez = "neveljavni operator!"
@@ -41,6 +43,8 @@ def pretvorba(a,b,c):
     else:
         rez = "dej vnesi s/min ali pa km/mi"
     return rez
+
+
 
 def randomm(stevilka):
     if stevilka.isdigit():
