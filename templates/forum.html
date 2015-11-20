@@ -16,11 +16,11 @@
                 <form method='post' action='/redirect'>
                 <ul>
                     <li> Ime</li>
-                    <li><input name='fime' value="Neznanec" onclick="this.focus();this.select()"></li>
+                    <li><input name='fime' value="{{ user.nickname() }}" readonly ></li>
                     <li> Priimek</li>
                     <li><input name='fpriimek'></li>
                     <li> Email</li>
-                    <li><input name='femail' value="{{ user.nickname() }}" readonly></li>
+                    <li><input name='femail' value="{{ user.email() }}" readonly></li>
                     <li> Sporocilo</li>
                     <li><textarea rows="4" cols="50" name='fsporocilo' onclick="this.focus();this.select()">Obvezno vpisi kaj notri</textarea></li>
                     <li><button class=myButton type='submit'>Objavi</button></li>
@@ -37,11 +37,11 @@
             <div id="link">
                 <a id=aback href="/">Tukaj klikni za nazaj</a>
             </div>
-            <p>Prosim prijavi se: <a href="{{ logout_url }}">Logout</a></p>
+            <p>Odjavi se: <a href="{{ logout_url }}">Logout</a></p>
         {% else %}
             <h1>Hello stari, dej se prijavi</h1>
 
-            <p>Odjavi se na: <a href="{{ login_url }}">Login</a></p>
+            <p>Prijavi se na: <a href="{{ login_url }}">Login</a></p>
         {% endif %}
     </div>
 {% endblock specifika %}

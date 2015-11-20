@@ -6,6 +6,7 @@
 
 {% block specifika %}
 <div id=center>
+    {% if logiran %}
 <h1>Ali bi ti res tole brisal? :)</h1>
     <form action="/forum/{{forum.key.id()}}/zbrisi" method="post">
      <button id=buttonbrisi type="submit">BRIŠI!!!!</button><br>
@@ -13,6 +14,11 @@
     </form>
     <div></div>
     <a id="aback" href = "/forum">Bejži nazaj</a>
+    {% else %}
+            <h1>Hello stari, dej se prijavi</h1>
+
+            <p>Prijavi se na: <a href="{{ login_url }}">Login</a></p>
+        {% endif %}
 </div>
 
 

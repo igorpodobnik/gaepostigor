@@ -9,6 +9,7 @@
 {% block specifika %}
 
     <div id=center>
+    {% if logiran %}
         <h1>Podatki sporočila</h1>
         <ul id=posli>
             <li>ID sporočila: {{ forum.key.id() }}</li>
@@ -21,5 +22,10 @@
         <div><a id=auredi href="/forum/{{forum.key.id()}}/uredi">Uredi</a></div>
         <div><a id=adelete href="/forum/{{forum.key.id()}}/zbrisi">Zbriši</a></div>
         <div><a id=aback href="/forum">Tukaj klikni za nazaj</a></div>
+    {% else %}
+        <h1>Hello stari, dej se prijavi</h1>
+
+        <p>Prijavi se na: <a href="{{ login_url }}">Login</a></p>
+    {% endif %}
     </div>
 {% endblock specifika %}

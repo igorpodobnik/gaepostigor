@@ -6,14 +6,15 @@
 
 {% block specifika %}
 <div id=center>
- <form action="/forum/{{forum.key.id()}}/uredi" method="post">
+ {% if logiran %}
+    <form action="/forum/{{forum.key.id()}}/uredi" method="post">
      <ul>
      <li> Ime</li>
-     <li><input name = "ime" value = "{{ forum.fime }}" onclick="this.focus();this.select()"></li>
+     <li><input name = "ime" value = "{{ forum.fime }}" onclick="this.focus();this.select()"readonly></li>
      <li> Priimek</li>
      <li><input name = "priimek" value = "{{ forum.fpriimek }}" onclick="this.focus();this.select()"></li>
      <li> Email</li>
-     <li><input name = "email" value = "{{ forum.femail }}" onclick="this.focus();this.select()"></li>
+     <li><input name = "email" value = "{{ forum.femail }}" onclick="this.focus();this.select()"readonly></li>
      <li> Sporocilo</li>
      <li><textarea rows="4" cols="50" name = "sporocilo" onclick="this.focus();this.select()">{{ forum.fsporocilo }}</textarea></li>
      </ul>
@@ -22,6 +23,11 @@
  </form>
     <div></div>
     <a id="aback" href = "/forum">Preklic urejanja</a>
+    {% else %}
+            <h1>Hello stari, dej se prijavi</h1>
+
+            <p>Prijavi se na: <a href="{{ login_url }}">Login</a></p>
+        {% endif %}
 </div>
 
 

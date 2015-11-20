@@ -21,8 +21,20 @@ params = {}
 sporocilo = "Obvezno vpisi kaj notri"
 imeforum = "Neznanec"
 
-
-
+def is_logged_in():
+    user = users.get_current_user()
+    if user:
+        logiran = True
+        logout_url = users.create_logout_url('/forum')
+        print user.nickname()
+        print user.user_id()
+        print "glej gor"
+        paramsif = {"logiran": logiran, "logout_url": logout_url, "user": user}
+    else:
+        logiran = False
+        login_url = users.create_login_url('/forum')
+        paramsif = {"logiran": logiran, "login_url": login_url, "user": user}
+    return paramsif
 
 class BaseHandler(webapp2.RequestHandler):
 
@@ -103,22 +115,11 @@ class SeznamSporocilHandler(BaseHandler):
 
 class ForumSporocilHandler(BaseHandler):
     def get(self):
+        #tole spodaj mi preveri ce je user prijavljen
+        paramsif = is_logged_in()
         #spodnje je vse pober
         #fseznam = Forum.query().fetch()
         #v query das notri pogoj
-        user = users.get_current_user()
-
-        if user:
-            logiran = True
-            logout_url = users.create_logout_url('/')
-
-            paramsif = {"logiran": logiran, "logout_url": logout_url, "user": user}
-        else:
-            logiran = False
-            login_url = users.create_login_url('/')
-
-            paramsif = {"logiran": logiran, "login_url": login_url, "user": user}
-
         fseznam = Forum.query(Forum.deleted == False).fetch()
         # SORT order takole zgleda... reverse za najvecjega navzdol
         fseznam = sorted(fseznam, key=lambda dat:dat.nastanek, reverse=True)
@@ -173,7 +174,9 @@ class redirectHandler(BaseHandler):
 class PosameznoForumHandler(BaseHandler):
     def get(self, forum_id):
         sporocilo = Forum.get_by_id(int(forum_id))
+        paramsif = is_logged_in()
         params = {"forum": sporocilo}
+        params.update(paramsif)
         self.render_template("posamezen-forum.html", params=params)
 
 
@@ -189,6 +192,8 @@ class ForumEditHandler(BaseHandler):
     def get(self, sporocilo_id):
         sporocilo = Forum.get_by_id(int(sporocilo_id))
         params = {"forum": sporocilo}
+        paramsif = is_logged_in()
+        params.update(paramsif)
         #tale forum gre potem v html vse forum.neki itd.
         self.render_template("urediforum.html", params=params)
     def post(self, sporocilo_id):
@@ -214,6 +219,8 @@ class ForumZbrisiHandler(BaseHandler):
         sporocilo = Forum.get_by_id(int(sporocilo_id))
         params = {"forum": sporocilo}
         #tale forum gre potem v html vse forum.neki itd.
+        paramsif = is_logged_in()
+        params.update(paramsif)
         self.render_template("zbrisiforum.html", params=params)
 
     def post(self, sporocilo_id):
