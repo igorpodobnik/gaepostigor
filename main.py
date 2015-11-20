@@ -5,14 +5,24 @@ import webapp2
 from models import Sporocilo,Forum
 import time
 from matematicni import matematika, pretvorba, randomm
+from google.appengine.api import users
+
+
+
 
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
+
+
+
+
 skupaj="Uporabnik je vpisal: /"
 params = {}
-
 sporocilo = "Obvezno vpisi kaj notri"
 imeforum = "Neznanec"
+
+
+
 
 class BaseHandler(webapp2.RequestHandler):
 
@@ -96,10 +106,25 @@ class ForumSporocilHandler(BaseHandler):
         #spodnje je vse pober
         #fseznam = Forum.query().fetch()
         #v query das notri pogoj
+        user = users.get_current_user()
+
+        if user:
+            logiran = True
+            logout_url = users.create_logout_url('/')
+
+            paramsif = {"logiran": logiran, "logout_url": logout_url, "user": user}
+        else:
+            logiran = False
+            login_url = users.create_login_url('/')
+
+            paramsif = {"logiran": logiran, "login_url": login_url, "user": user}
+
         fseznam = Forum.query(Forum.deleted == False).fetch()
         # SORT order takole zgleda... reverse za najvecjega navzdol
         fseznam = sorted(fseznam, key=lambda dat:dat.nastanek, reverse=True)
         params = {"forumseznam" : fseznam }
+        #zdruzi dva dictionarija
+        params.update(paramsif)
         return self.render_template("forum.html" , params=params)
 
 

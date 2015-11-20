@@ -11,30 +11,37 @@
 {% block specifika %}
 
     <div id=center>
-        <h1>Vnesite sporočilo</h1>
-            <form method='post' action='/redirect'>
-            <ul>
-                <li> Ime</li>
-                <li><input name='fime' value="Neznanec" onclick="this.focus();this.select()"></li>
-                <li> Priimek</li>
-                <li><input name='fpriimek'></li>
-                <li> Email</li>
-                <li><input name='femail'></li>
-                <li> Sporocilo</li>
-                <li><textarea rows="4" cols="50" name='fsporocilo' onclick="this.focus();this.select()">Obvezno vpisi kaj notri</textarea></li>
-                <li><button class=myButton type='submit'>Objavi</button></li>
-                </ul>
+        {% if logiran %}
+            <h1>Vnesite sporočilo</h1>
+                <form method='post' action='/redirect'>
+                <ul>
+                    <li> Ime</li>
+                    <li><input name='fime' value="Neznanec" onclick="this.focus();this.select()"></li>
+                    <li> Priimek</li>
+                    <li><input name='fpriimek'></li>
+                    <li> Email</li>
+                    <li><input name='femail' value="{{ user.nickname() }}" readonly></li>
+                    <li> Sporocilo</li>
+                    <li><textarea rows="4" cols="50" name='fsporocilo' onclick="this.focus();this.select()">Obvezno vpisi kaj notri</textarea></li>
+                    <li><button class=myButton type='submit'>Objavi</button></li>
+                    </ul>
 
 
-        <h1 id=h1seznam>Seznam sporočil</h1>
+            <h1 id=h1seznam>Seznam sporočil</h1>
 
-        {% for forum in forumseznam %}
-            <p>Ime: <a href="/forum/{{ forum.key.id() }}">{{ forum.fime }}</a></p>
-            <p>Sporočilo: {{ forum.fsporocilo }} </p>
-            <p>   --------------------------- </p>
-        {% endfor %}
-        <div id="link">
-            <a id=aback href="/">Tukaj klikni za nazaj</a>
-        </div>
+            {% for forum in forumseznam %}
+                <p>Ime: <a href="/forum/{{ forum.key.id() }}">{{ forum.fime }}</a></p>
+                <p>Sporočilo: {{ forum.fsporocilo }} </p>
+                <p>   --------------------------- </p>
+            {% endfor %}
+            <div id="link">
+                <a id=aback href="/">Tukaj klikni za nazaj</a>
+            </div>
+            <p>Prosim prijavi se: <a href="{{ logout_url }}">Logout</a></p>
+        {% else %}
+            <h1>Hello stari, dej se prijavi</h1>
+
+            <p>Odjavi se na: <a href="{{ login_url }}">Login</a></p>
+        {% endif %}
     </div>
 {% endblock specifika %}
