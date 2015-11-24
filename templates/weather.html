@@ -10,10 +10,11 @@
 
     <div id=center>
     {% if logiran %}
-        <h2>Vreme v kraju {{ podatki.name }}</h2>
-
-        <p>Opis: {{ podatki.weather[0].description }}</p>
-        <p>Trenutna temperatura: {{ podatki.main.temp }} stopinj C</p>
+        {% for n in range(2)  %}
+        <h2>Vreme v kraju {{ podatki.list[n].name }}</h2>
+        <p>Opis: {{ podatki.list[n].weather[0].description }}</p>
+        <p>Trenutna temperatura: {{ podatki.list[n].main.temp }} stopinj C</p>
+        {% endfor %}
     {% else %}
         <h1>Hello stari, dej se prijavi</h1>
 

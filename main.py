@@ -248,7 +248,9 @@ class JSONHandler(BaseHandler):
 class WeatherHandler(BaseHandler):
     def get(self):
         #v urlju so parametri ki jih zelimo videti loceni z ikonco &
-        url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=29fb19f38dde3e3bfe9f2c2536b414b0"
+        # novo mesto 3194350 , 3239318 Ljubljana
+        url = "http://api.openweathermap.org/data/2.5/group?id=3196359,3194351&units=metric&appid=29fb19f38dde3e3bfe9f2c2536b414b0"
+        #url = "http://api.openweathermap.org/data/2.5/weather?q=Ljubljana&units=metric&appid=29fb19f38dde3e3bfe9f2c2536b414b0"
         result = urlfetch.fetch(url)
         podatki = json.loads(result.content)
         params = {"podatki": podatki}
