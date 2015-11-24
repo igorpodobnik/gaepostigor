@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Posamezen vnos{% endblock title %}
+{% block css %}<!--suppress XmlDuplicatedId -->
+<link rel="stylesheet" href="/assets/css/style-forum.css">
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+{% endblock css %}
+
+{% block specifika %}
+
+    <div id=center>
+    {% if logiran %}
+        {% for oseba in seznam %}
+            <p>{{ oseba.first_name }} {{ oseba.last_name }}, {{ oseba.SSN }}</p>
+        {% endfor %}
+    {% else %}
+        <h1>Hello stari, dej se prijavi</h1>
+
+        <p>Prijavi se na: <a href="{{ login_url }}">Login</a></p>
+    {% endif %}
+        <div><a id=aback href="/">Tukaj klikni za nazaj</a></div>
+    </div>
+{% endblock specifika %}

@@ -6,8 +6,10 @@ from models import Sporocilo,Forum
 import time
 from matematicni import matematika, pretvorba, randomm
 from google.appengine.api import users
-
-
+#import jasona
+import json
+# import urlfetch da lahko z naslova jasone pobiramo
+from google.appengine.api import urlfetch
 
 
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
@@ -231,6 +233,29 @@ class ForumZbrisiHandler(BaseHandler):
         time.sleep(1)
         self.redirect_to("forum1")
 
+class JSONHandler(BaseHandler):
+    def get(self):
+        #prebiranje json fajla
+        data = open("people.json", "r").read()
+        json_data = json.loads(data)
+
+        paramsif = is_logged_in()
+        params = {"seznam": json_data}
+        params.update(paramsif)
+
+        self.render_template("json.html", params)
+
+class WeatherHandler(BaseHandler):
+    def get(self):
+        #v urlju so parametri ki jih zelimo videti loceni z ikonco &
+        url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=29fb19f38dde3e3bfe9f2c2536b414b0"
+        result = urlfetch.fetch(url)
+        podatki = json.loads(result.content)
+        params = {"podatki": podatki}
+        paramsif = is_logged_in()
+        params.update(paramsif)
+
+        self.render_template("weather.html", params)
 
 
 app = webapp2.WSGIApplication([
@@ -247,6 +272,8 @@ app = webapp2.WSGIApplication([
     webapp2.Route('/forumpost', ForumPostSporocilHandler),
     webapp2.Route('/sporocilo/<sporocilo_id:\d+>', PosameznoSporociloHandler),
     webapp2.Route('/forum/<forum_id:\d+>', PosameznoForumHandler),
+    webapp2.Route('/json', JSONHandler),
+    webapp2.Route('/weather', WeatherHandler),
 ], debug=True)
 
 #TODO:  ... sortiraj vnose po datumu
