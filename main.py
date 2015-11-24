@@ -278,4 +278,4 @@ app = webapp2.WSGIApplication([
     webapp2.Route('/weather', WeatherHandler),
 ], debug=True)
 
-#TODO:  ... sortiraj vnose po datumu
+#TODO:
